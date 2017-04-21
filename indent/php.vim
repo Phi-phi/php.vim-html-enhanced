@@ -24,9 +24,7 @@
 
 " Options: 
 let php_noindent_switch=0    " set this to '1' to not try to indent switch/case statements
-set sw=4                     " default shiftwidth of 3 spaces
-
-setlocal tabstop=2
+set sw=2                     " default shiftwidth of 3 spaces
 
 if exists("b:did_indent")
 	finish
@@ -63,7 +61,7 @@ function GetPhpIndent()
 	let line = getline(lnum)    " last line
 	let cline = getline(v:lnum) " current line
 	let pline = getline(lnum - 1) " previous to last line
-	let ind = indent(lnum)
+	let ind = indent(lnum) * 2
 
 	let restore_ic=&ic
 	let &ic=1 " ignore case
@@ -272,4 +270,3 @@ endfun
 
 " vim: set ts=3 sw=3:
 "
-setlocal tabstop=2
