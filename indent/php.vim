@@ -26,7 +26,7 @@
 let php_noindent_switch=0    " set this to '1' to not try to indent switch/case statements
 set sw=4                     " default shiftwidth of 3 spaces
 
-set tabstop=2
+setlocal tabstop=2
 
 if exists("b:did_indent")
 	finish
@@ -272,4 +272,4 @@ endfun
 
 " vim: set ts=3 sw=3:
 "
-set tabstop=2
+setlocal tabstop=2
