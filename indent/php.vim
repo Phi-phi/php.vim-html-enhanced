@@ -24,7 +24,8 @@
 
 " Options: 
 let php_noindent_switch=0    " set this to '1' to not try to indent switch/case statements
-set sw=2                     " default shiftwidth of 3 spaces
+set sw=4                     " default shiftwidth of 3 spaces
+set tabstop=2
 
 
 if exists("b:did_indent")
@@ -91,14 +92,14 @@ function GetPhpIndent()
 		if cline =~ '^\s*[)}]'
 			let ind = ind - &sw
 		endif
-		return ind * 2
+		return ind
 	else " Try to indent switch/case statements as well
 		" Indent blocks enclosed by {} or () or case statements, with some anal requirements
 		if line =~ 'case.*:\|[{(]\s*\(#[^)}]*\)\=$'
 			let ind = ind + &sw
 			" return if the current line is not another case statement of the previous line is a bracket open
 			if cline !~ '.*case.*:\|default:' || line =~ '[{(]\s*\(#[^)}]*\)\=$'
-				return ind * 2
+				return ind
 			endif
 		endif
 		if cline =~ '^\s*case.*:\|^\s*default:\|^\s*[)}]'
@@ -113,7 +114,7 @@ function GetPhpIndent()
 		if line =~ 'default:'
 			let ind = ind + &sw
 		endif
-		return ind * 2
+		return ind
 	endif
 endfunction
 
